@@ -14,11 +14,27 @@
         <th>Title</th>
         <th>Detail</th>
     </tr>
-    <g:each in="${notDsoneTasks}" var="task">
+    <g:each in="${notDoneTasks}" var="todo">
         <tr>
-            <td><g:checkBox name="" value="${task.isDone}"/></td>
-            <td>${task.title}</td>
-            <td>${task.detail}</td>
+            <td><g:link controller="todo" action="update" id="${todo.id}">Done</g:link></td>
+            <td>${todo.title}</td>
+            <td>${todo.detail}</td>
+        </tr>
+    </g:each>
+</table>
+<table>
+    <tr>
+        <th>Done</th>
+        <th>Title</th>
+        <th>Detail</th>
+        <th>Done at</th>
+    </tr>
+    <g:each in="${doneTasks}" var="todo">
+        <tr>
+            <td>Done</td>
+            <td>${todo.title}</td>
+            <td>${todo.detail}</td>
+            <td>${todo.dateDone}</td>
         </tr>
     </g:each>
 </table>

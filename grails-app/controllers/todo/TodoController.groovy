@@ -27,6 +27,18 @@ class TodoController {
         redirect action: "addtask"
     }
 
+    def update(Todo todo) {
+        todo.dateDone = new Date()
+        todo.isDone = true
+        if (todo.validate()) {
+            todo.save flush: true, failOrError: true
+            flash.message = "You have successfully created a new task."
+        } else {      // something failed
+            flash.message = "Error occurred while creating new task"
+        }
+        redirect action:"index"
+    }
+
     def addtask() {
         render view: "addtask.gsp"
     }
