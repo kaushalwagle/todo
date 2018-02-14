@@ -12,7 +12,7 @@
 <g:if test="${flash.message}">
     <div class="alert alert-info" role="alert">${flash.message}</div>
 </g:if>
-<div class="container-fluid">
+<div class="container">
     <ul class="nav nav-pills">
         <li class="active"><a data-toggle="pill" href="#taskList">Task List</a></li>
         <li><a data-toggle="pill" href="#completedTask">Completed Task</a></li>
@@ -28,14 +28,14 @@
                 <button type="submit" class="btn btn-default">Add</button>
             </g:form>
             <div class="container">
-                <table>
+                <table class="table table-striped">
                     <tr>
-                        <th colspan="2">Task List</th>
+                        <th colspan="2" class="text-center">Task List</th>
                     </tr>
                     <g:each var="todo" in="${notDoneTasks}">
                         <tr>
-                            <td>${todo.detail}</td>
-                            <td><g:link controller="todo" action="update" id="${todo.id}">Done</g:link></td>
+                            <td class="text-center">${todo.detail}</td>
+                            <td class="text-center"><g:link controller="todo" action="update" id="${todo.id}" class="btn btn-default">Done</g:link></td>
                         </tr>
                     </g:each>
                 </table>
@@ -44,13 +44,13 @@
 
         <div id="completedTask" class="tab-pane fade">
             <div class="container">
-                <table>
+                <table class="table table-striped">
                     <tr>
-                        <th colspan="2">Completed Task List</th>
+                        <th colspan="2" class="text-center">Completed Task List</th>
                     </tr>
                     <g:each var="todo" in="${doneTasks}">
                         <tr>
-                            <td>${todo.detail}</td>
+                            <td class="text-center">${todo.detail}</td>
                         </tr>
                     </g:each>
                 </table>
