@@ -12,24 +12,50 @@
 <g:if test="${flash.message}">
     <div class="alert alert-info" role="alert">${flash.message}</div>
 </g:if>
-<ul class="nav nav-pills">
-    <li class="active"><a data-toggle="pill" href="#taskList">Task List</a></li>
-    <li><a data-toggle="pill" href="#completedTask">Completed Task</a></li>
-</ul>
+<div class="container-fluid">
+    <ul class="nav nav-pills">
+        <li class="active"><a data-toggle="pill" href="#taskList">Task List</a></li>
+        <li><a data-toggle="pill" href="#completedTask">Completed Task</a></li>
+    </ul>
 
-<div class="tab-content">
-    <div id="taskList" class="tab-pane fade in active">
-        <g:form class="form-inline" controller="todo" action="save">
-            <div class="form-group">
-                <label for="detail">Task:</label>
-                <input type="text" class="form-control" id="detail" name="detail">
+    <div class="tab-content">
+        <div id="taskList" class="tab-pane fade in active">
+            <g:form class="form-inline" controller="todo" action="save">
+                <div class="form-group">
+                    <label for="detail">Task:</label>
+                    <input type="text" class="form-control" id="detail" name="detail">
+                </div>
+                <button type="submit" class="btn btn-default">Add</button>
+            </g:form>
+            <div class="container">
+                <table>
+                    <tr>
+                        <th colspan="2">Task List</th>
+                    </tr>
+                    <g:each var="todo" in="${notDoneTasks}">
+                        <tr>
+                            <td>${todo.detail}</td>
+                            <td><g:link controller="todo" action="update" id="${todo.id}">Done</g:link></td>
+                        </tr>
+                    </g:each>
+                </table>
             </div>
-            <button type="submit" class="btn btn-default">Add</button>
-        </g:form>
-    </div>
+        </div>
 
-    <div id="completedTask" class="tab-pane fade">
-
+        <div id="completedTask" class="tab-pane fade">
+            <div class="container">
+                <table>
+                    <tr>
+                        <th colspan="2">Completed Task List</th>
+                    </tr>
+                    <g:each var="todo" in="${doneTasks}">
+                        <tr>
+                            <td>${todo.detail}</td>
+                        </tr>
+                    </g:each>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 
