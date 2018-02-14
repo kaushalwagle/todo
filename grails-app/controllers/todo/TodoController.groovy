@@ -24,7 +24,7 @@ class TodoController {
         } else {      // something failed
             flash.message = "Error occurred while creating new task"
         }
-        redirect action: "addtask"
+        redirect action: "index"
     }
 
     def update(Todo todo) {
@@ -37,9 +37,5 @@ class TodoController {
             flash.message = "Error occurred while creating new task"
         }
         redirect action:"index"
-    }
-
-    def addtask() {
-        render view: "addtask.gsp"
     }
 }
